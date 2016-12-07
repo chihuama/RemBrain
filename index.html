@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RemBrain</title>
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	
+	<link rel="stylesheet"  type="text/css" href="css/brainHome.css">
+	<link rel="stylesheet"  type="text/css" href="css/d3.slider.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+	<script type="text/javascript" src="js/dataParser.js"></script>
+	<script type="text/javascript" src="js/pixelView.js"></script>
+	<script type="text/javascript" src="js/zoomView.js"></script>
+	<script type="text/javascript" src="js/mosaicView.js"></script>
+	<script type="text/javascript" src="js/groupsChooserView.js"></script>
+	<script type="text/javascript" src="js/swordPlot.js"></script>
+	<script type="text/javascript" src="js/starPlot.js"></script>
+	<script type="text/javascript" src="js/timeLine.js"></script>
+	<script type="text/javascript" src="js/d3.slider.js"></script>
+	<script type="text/javascript" src="js/neighborsPlot.js"></script>
+	<script type="text/javascript" src="js/indexInit.js"></script>
+</head>
+
+<body onload="init()">
+	<div class="mainContainer">
+
+		<div id="leftTimelineDivContainer" class="leftTimelineDivContainer"></div>
+		<div id="rightTimelineDivContainer" class="rightTimelineDivContainer"></div>
+
+		<div id="toolBoxDiv" class="toolBoxDiv">
+			<div id="actionChooserContainerDiv" class="actionChooserContainerDiv">
+					<form>
+						<input type="radio" name="gender" value="sword" onclick="changeAction(this.value)"> Individual Behavior View<br>
+						<br>
+				  	<input type="radio" name="gender" value="zoom" checked onclick="changeAction(this.value)"> Mosaic Matrix View<br>
+					</form>
+			</div>
+
+			<div id="sliderDivContainer" class="sliderDivContainer">
+				<div id="lensSizeLabelDiv" class="lensSizeLabelDiv">Lens Size: </div>
+				<div id="lensSizeContainerDiv" class="lensSizeContainerDiv">
+					<div id="lensSizeDiv" class="lensSizeDiv"></div>
+				</div>
+				<div id="zoomSizeLabelDiv" class="zoomSizeLabelDiv">Zoom Size: </div>
+				<div id="zoomSizeContainerDiv" class="zoomSizeContainerDiv">
+					<div id="zoomSizeDiv" class="zoomSizeDiv"></div>
+				</div>
+			</div>
+
+			<!-- <div id="knnOptionsDivContainer" class="sliderDivContainer" style="visibility: hidden">
+				<div id="proximityLabelDiv" class="lensSizeLabelDiv">Proximity: </div>
+				<div id="proximityContainerDiv" class="lensSizeContainerDiv">
+					<div id="proximityDiv" class="lensSizeDiv"></div>
+				</div>
+				<div id="knnNumLabelDiv" class="zoomSizeLabelDiv">Number: </div>
+				<div id="knnNumContainerDiv" class="zoomSizeContainerDiv">
+					<div id="knnNumDiv" class="zoomSizeDiv"></div>
+				</div>
+			</div> -->
+
+			<div id="chooserDivContainer" class = "chooserDivContainer"> </div>
+		</div>  <!-- toolBoxDiv -->
+
+
+    <div id="starPlotLegend" class="starPlotLegend"> </div>
+
+
+		<div id="mosaicTopDivContainerLeft" class="mosaicTopDivContainerLeft">
+			<select id="dataOptionListLeft" name="dataLeft" onchange="changeLeftMosaicData()">
+				 <option value="Young40_a1"> Young40_a1</option>
+				 <option value="Old38_a1"> Old38_a1</option>
+				 <option value="Old38_a2"> Old38_a2</option>
+				 <option value="Old38_a3"> Old38_a3</option>
+			</select>
+		</div>
+		<div id="mosaicDivContainerLeft" class="mosaicDivContainerLeft"></div>
+		<div id="swordDivContainerLeft" class="swordDivContainerLeft"></div>
+    <div id="starPlotDivContainerRight" class="starPlotDivContainerRight"></div>
+
+
+		<div id="mosaicTopDivContainerCenter" class="mosaicTopDivContainerCenter">
+			<form>
+				<input type="checkbox" checked onclick="changeTimeChain(this.checked)" > Sync Timelines</input>
+				<input type="checkbox" checked onclick="changeZoomChain(this.checked)" > Sync Zoom</input>
+			</form>
+		</div>
+
+
+		<div id="mosaicTopDivContainerRight" class="mosaicTopDivContainerRight">
+			<select id="dataOptionListRight" name="dataRight" onchange="changeRightMosaicData()">
+				  <option value="Young40_a1"> Young40_a1</option>
+				 <option value="Old38_a1" selected="selected"> Old38_a1</option>
+				 <option value="Old38_a2"> Old38_a2</option>
+				 <option value="Old38_a3"> Old38_a3</option>
+			</select>
+		</div>
+		<div id="mosaicDivContainerRight" class="mosaicDivContainerRight"></div>
+		<div id="swordDivContainerRight" class="swordDivContainerRight"></div>
+		<div id="starPlotDivContainerLeft" class="starPlotDivContainerLeft"></div>
+
+		<!-- <div id="overallStarPlotDivContainerLeft" class="overallStarPlotDivContainerLeft"></div>
+		<div id="overallStarPlotDivContainerRight" class="overallStarPlotDivContainerRight"></div> -->
+		<!-- <div id = "knnDivContainer" class="knnDivContainer" style="visibility: hidden"> </div> -->
+	</div>  <!-- mainContainer -->
+
+	<div class="loadingDiv">
+		<div class="loadingSpinnerDiv"> <i class="fa fa-3x fa-spinner fa-spin"></i></div>
+	</div>
+
+</body>
+</html>
