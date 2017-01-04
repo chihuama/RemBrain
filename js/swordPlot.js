@@ -2,8 +2,8 @@ function swordPlot(where,data,pixel,grayData, minTime, span){
 	var container = d3.select(where);
 
 	var w = 3000;
-	var singleH = 300;
-	var sword = 100;
+	var singleH = 700;
+	var sword = 220;
 
 	this.minTime = minTime;
 	this.span = span;
@@ -11,7 +11,7 @@ function swordPlot(where,data,pixel,grayData, minTime, span){
 	container.selectAll("*").remove();
 
 	var svg = this.svg = container.append("svg").attr("class","mosaicSvg")
-									.attr("preserveAspectRatio","none")
+									// .attr("preserveAspectRatio","none")
 									.attr("viewBox","0 0 " + w+ " " + (singleH * 2 + sword) );
 
 	var upperY = d3.scale.linear().range([ singleH, 0]);
@@ -77,24 +77,24 @@ function swordPlot(where,data,pixel,grayData, minTime, span){
 
 	svg.append("text")
 	  .attr("x", 80)
-		.attr("y", upperY(max) + 40)
+		.attr("y", upperY(max) + 45)
 		.style("fill", "black")
-		.style("font-size", 60)
+		.style("font-size", 92)
 		.text(" " + max);
 
 	// time start & end labels
 	svg.append("text")
 	  .attr("x", 0)
-		.attr("y", singleH + sword + 50)
+		.attr("y", singleH + sword + 70)
 		.style("fill", "black")
-		.style("font-size", 56)
+		.style("font-size", 74)
 		.text(" " + 0);
 
 	svg.append("text")
-	  .attr("x", w - 90)
-		.attr("y", singleH + sword + 50)
+	  .attr("x", w - 110)
+		.attr("y", singleH + sword + 70)
 		.style("fill", "black")
-		.style("font-size", 56)
+		.style("font-size", 74)
 		.text(" " + 100);
 
 

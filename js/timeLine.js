@@ -3,8 +3,8 @@ function timelineView(where,data){
 	var container = d3.select(where);
 	var that=this;
 
-	var w =1000;
-	var h=100;
+	var w = 1000;
+	var h = 120;
 	this.svgW = w;
 	this.svgH = h;
 
@@ -15,8 +15,8 @@ function timelineView(where,data){
 	this.onChangeFunc = function(){};
 
 	var svg = this.svg = container.append("svg").attr("class","mosaicSvg")
-									.attr("preserveAspectRatio","none")
-									.attr("viewBox","0 0 " + (w)+ " " + (h));
+									// .attr("preserveAspectRatio","none")
+									.attr("viewBox","0 0 " + (w) + " " + (h));
 
 
 	var maxS = 10000;
@@ -73,7 +73,7 @@ function timelineView(where,data){
 			.style("stroke-dasharray", ("10, 5"));
 
 		labels.append("text")
-		  .attr("x", 5)
+		  .attr("x", 0)
 			.attr("y", y(maxY) + 6)
 			.style("fill", "black")
 			.style("font-size", 20)
@@ -90,7 +90,7 @@ function timelineView(where,data){
 
 		labels.append("text")
 		  .attr("x", x(maxT))
-			.attr("y", h - 3)
+			.attr("y", h - 1)
 			.style("fill", "black")
 			.style("font-size", 20)
 			.style("text-anchor", "middle")
