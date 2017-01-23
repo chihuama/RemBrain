@@ -77,7 +77,7 @@ function swordPlot(where,data,pixel,grayData, minTime, span){
 
 	svg.append("text")
 	  .attr("x", 80)
-		.attr("y", upperY(max) + 45)
+		.attr("y", upperY(max) + 65)
 		.style("fill", "black")
 		.style("font-size", 92)
 		.text(" " + max);

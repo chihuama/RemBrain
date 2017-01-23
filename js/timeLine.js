@@ -15,7 +15,8 @@ function timelineView(where,data){
 	this.onChangeFunc = function(){};
 
 	var svg = this.svg = container.append("svg").attr("class","mosaicSvg")
-									// .attr("preserveAspectRatio","none")
+									.attr("preserveAspectRatio","none")
+									// .attr("preserveAspectRatio","xMinYMin meet")
 									.attr("viewBox","0 0 " + (w) + " " + (h));
 
 
