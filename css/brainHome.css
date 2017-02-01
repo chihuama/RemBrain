@@ -13,69 +13,80 @@ body{
 }
 
 
-.mosaicTopDivContainerLeft{
+.titleProj{
 	position: absolute;
 	left:1%;
-	top:34%;
+	top:0%;
 	height: 4%;
-	width: 40%;
+	width: 82%;
 	margin: 0 0;
-	text-align: center;
+	text-align: left;;
+	font-size: 2.8vmin;
+	font-weight: bold;
+	margin-top: 0.3vmin;
+	/*background-color: lightblue;*/
 }
-.mosaicTopDivContainerRight{
-  position: absolute;
-	left:43%;
-	top:34%;
-	height: 4%;
-	width: 40%;
-	margin: 0 0;
-	text-align: center;
-	/*background-color: blue;*/
-}
-.mosaicTopDivContainerCenter{
+.titleProjExp{
 	position: absolute;
-	left: 31%;
-  top: 34%;
-  height: 4%;
-  width: 20%;
+	left: 17vmin;
+	top: 0%;
+	height: 4%;
+	width: 82%;
 	margin: 0 0;
-	text-align: center;
-	z-index: 10;
+	text-align: left;
+	font-size: 1.8vmin;
+	font-weight: bold;
+	margin-top: 1vmin;
 }
 
-.mosaicDivContainerLeft{
-	position: absolute;
-	left:1%;
-	top:38%;
-	height: 50%;
-	width: 40%;
-	margin: 0 0;
-	background-color: #cccccc;
-}
-.mosaicDivContainerRight{
-	position: absolute;
-	left:43%;
-	top:38%;
-	height: 50%;
-	width: 40%;
-	margin: 0 0;
-	background-color: #cccccc;
-}
 
+.titleIndividual{
+	position: absolute;
+	left: 1%;
+	top: 4%;
+	height: 3%;
+	width: 82%;
+	margin: 0 0;
+	text-align: center;
+	font-size: 1.8vmin;
+	font-weight: bold;
+}
+.titleIndividualLeft{
+	position: absolute;
+	left: 1%;
+	top: 4%;
+	height: 3%;
+	width: 40%;
+	margin: 0 0;
+	text-align: center;
+	font-size: 1.8vmin;
+	font-weight: bold;
+}
+.titleIndividualRight{
+	position: absolute;
+	left: 43%;
+	top: 4%;
+	height: 3%;
+	width: 40%;
+	margin: 0 0;
+	text-align: center;
+	font-size: 1.8vmin;
+	font-weight: bold;
+}
 
 .swordDivContainerLeft{
 	position: absolute;
 	left:1%;
-	top:2%;
-	height: 30%;
+	top:7%;
+	height: 25%;
 	width: 28%;
 	margin: 0 0;
 }
 .swordDivContainerRight{
 	position: absolute;
 	left:43%;
-	top:2%;
-	height: 30%;
+	top:7%;
+	height: 25%;
 	width: 28%;
 	margin: 0 0;
 }
@@ -83,16 +94,110 @@ body{
 .starPlotDivContainerLeft{
 	position: absolute;
 	left:30%;
-	top:2%;
-	height: 30%;
+	top:7%;
+	height: 25%;
 	width: 10%;
 }
 .starPlotDivContainerRight{
 	position: absolute;
 	left:72%;
-	top:2%;
-	height: 30%;
+	top:7%;
+	height: 25%;
 	width: 10%;
+}
+
+
+.titleSlice{
+	position: absolute;
+	left: 1%;
+	top: 36%;
+	height: 2%;
+	width: 82%;
+	margin: 0 0;
+	text-align: center;
+	font-size: 1.8vmin;
+	font-weight: bold;
+}
+.titleSliceLeft{
+	position: absolute;
+	left: 1%;
+	top: 36%;
+	height: 2%;
+	width: 40%;
+	margin: 0 0;
+	text-align: center;
+	font-size: 1.8vmin;
+	font-weight: bold;
+}
+.titleSliceRight{
+	position: absolute;
+	left: 43%;
+	top: 36%;
+	height: 2%;
+	width: 40%;
+	margin: 0 0;
+	text-align: center;
+	font-size: 1.8vmin;
+	font-weight: bold;
+}
+
+.mosaicTopDivContainerLeft{
+	position: absolute;
+	left: 1%;
+	top: 38%;
+	height: 2%;
+	width: 40%;
+	margin: 0 0;
+	text-align: center;
+}
+.mosaicTopDivContainerRight{
+  position: absolute;
+	left: 43%;
+	top: 38%;
+	height: 2%;
+	width: 40%;
+	margin: 0 0;
+	text-align: center;
+}
+.mosaicTopDivContainerCenter{
+	position: absolute;
+	left: 32%;
+  top: 38%;
+  height: 3%;
+  width: 20%;
+	margin: 0 0;
+	text-align: center;
+	z-index: 10;
+	font-size: 1.6vmin;
+}
+.mosaicTopDivContainerCenter input{
+	width: 1.4vmin;
+	height: 1.4vmin;
+}
+
+.mosaicDivContainerLeft{
+	position: absolute;
+	left: 1%;
+	top: 41%;
+	height: 45%;
+	width: 40%;
+	margin: 0 0;
+	background-color: #cccccc;
+}
+.mosaicDivContainerRight{
+	position: absolute;
+	left: 43%;
+	top: 41%;
+	height: 45%;
+	width: 40%;
+	margin: 0 0;
+	background-color: #cccccc;
+}
+
+select, option {
+	width: 11vmin;
+	height: 2vmin;
+	font-size: 1.4vmin;
 }
 
 /*.overallStarPlotDivContainerLeft{
@@ -109,6 +214,40 @@ body{
 	height: 35%;
 	width: 35%;
 }*/
+
+.titleTimeline{
+	position: absolute;
+	left: 1%;
+	top: 88%;
+	height: 2%;
+	width: 82%;
+	margin: 0 0;
+	text-align: center;
+	font-size: 1.8vmin;
+	font-weight: bold;
+}
+.titleTimelineLeft{
+	position: absolute;
+	left: 1%;
+	top: 88%;
+	height: 2%;
+	width: 40%;
+	margin: 0 0;
+	text-align: center;
+	font-size: 1.8vmin;
+	font-weight: bold;
+}
+.titleTimelineRight{
+	position: absolute;
+	left: 43%;
+	top: 88%;
+	height: 2%;
+	width: 40%;
+	margin: 0 0;
+	text-align: center;
+	font-size: 1.8vmin;
+	font-weight: bold;
+}
 
 .leftTimelineDivContainer{
 	position: absolute;
@@ -139,80 +278,112 @@ body{
 
 .starPlotLegend{
 	position: absolute;
-	left:85%;
-	top:2%;
-	height: 30%;
+	left: 85%;
+	top: 5%;
+	height: 25%;
 	width: 14%;
 }
 
 .toolBoxDiv{
 	position: absolute;
 	left:85%;
-	top:36%;
-	height: 63%;
+	top:40%;
+	height: 59%;
 	width: 14%;
 }
 
 .actionChooserContainerDiv{
 	position: absolute;
-	left:0%;
-	top:2%;
-	height: 14%;
+	left: 0%;
+	top: 0%;
+	height: 10%;
 	width: 100%;
-	/*background-color: orange;*/
+	font-size: 1.6vmin;
+	text-align: left;
 }
-.sliderDivContainer{
-	position: absolute;
-	left:12%;
-	top:16%;
-	height: 14%;
-	width: 88%;
-	/*background-color: orange;*/
-}
-.chooserDivContainer{
-	position: absolute;
-	left:0;
-	top:32%;
-	height: 68%;
-	width: 100%;
+.actionChooserContainerDiv input{
+	width: 1.4vmin;
+	height: 1.4vmin;
 }
 
-.lensSizeContainerDiv{
+.sliderDivContainer{
 	position: absolute;
-	left:40%;
-	top: 5%;
-	height: 45%;
-	width: 60%;
-	/*background-color: pink;*/
-}
-.zoomSizeContainerDiv{
-	position: absolute;
-	left:40%;
-	top:50%;
-	height: 45%;
-	width: 60%;
+	left: 11%;
+	top: 11%;
+	height: 10%;
+	width: 88%;
 }
 .lensSizeLabelDiv{
 	position: absolute;
-	left:1%;
+	left: 1%;
 	top: 5%;
-	height: 45%;
-	width: 40%;
+	/*height: 45%;
+	width: 40%;*/
+	font-size: 1.4vmin;
 }
-.zoomSizeLabelDiv{
+.lensSizeContainerDiv{
 	position: absolute;
-	left:1%;
-	top:50%;
-	height: 45%;
-	width: 40%;
+	left: 4.5vw;
+	top: 5%;
+	/*height: 45%;
+	width: 60%;*/
+	/*height: 2.5vh;
+	width: 7vw;*/
+}
+#lensSizeDiv{
+	top: 0.2vh;
+	height: 1vh;
+	width: 7vw;
 }
 
+.zoomSizeLabelDiv{
+	position: absolute;
+	left: 1%;
+	top: 50%;
+	/*height: 45%;
+	width: 40%;*/
+	font-size: 1.4vmin;
+}
+.zoomSizeContainerDiv{
+	position: absolute;
+	left: 4.5vw;/*40%;*/
+	top: 50%;
+	/*height: 2.5vh;
+	width: 7vw;*/
+}
+#zoomSizeDiv{
+	top: 0.2vh;
+	height: 1vh;
+	width: 7vw;
+}
+#handle-one{
+	width: 1.8vmin;
+	height: 1.8vmin;
+}
+
+.chooserLabelDiv{
+	position: absolute;
+	left: 0;
+	top: 24%;
+	height: 2%;
+	width: 100%;
+	font-size: 1.8vmin;
+	text-align: center;
+}
+.chooserDivContainer{
+	position: absolute;
+	left: 0;
+	top: 26%;
+	height: 74%;
+	width: 100%;
+}
+
+/*************************/
 
 .mosaicSvg{
 	height: 100%;
 	width: 100%;
 }
-
 
 .line{
   stroke: steelblue;
