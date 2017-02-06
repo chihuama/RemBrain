@@ -58,6 +58,7 @@ function initWithData(data,dataRight,sizeData,sizeDataRight,network,networkRight
 
 
 	chooser = new groupsChooserView("#chooserDivContainer");
+
 	chooser.onClick(function(){
 		mosaic.updateColor();
 		mosaicRight.updateColor();
@@ -65,33 +66,8 @@ function initWithData(data,dataRight,sizeData,sizeDataRight,network,networkRight
 
 
 	timeLine = new timelineView("#leftTimelineDivContainer",sizeData);
-	// timeLine.onTimeChange(function(min,span){
-	// 	if (timeSync){
-	// 		timeLineRight.changeTime(min,span);
-	// 		mosaicRight.changeTimeSpan(min,span);
-	// 		swordRight.changeTime(min,span);
-	// 		starRight.changeColor();
-	// 	}
-	// 	mosaic.changeTimeSpan(min,span);
-	// 	sword.changeTime(min,span);
-	// 	star.changeColor();
-	// });
-
 	timeLineRight = new timelineView("#rightTimelineDivContainer",sizeDataRight);
-	// timeLineRight.onTimeChange(function(min,span){
-	// 	if (timeSync){
-	// 		timeLine.changeTime(min,span);
-	// 		mosaic.changeTimeSpan(min,span);
-	// 		sword.changeTime(min,span);
-	// 		star.changeColor();
-	// 	}
-	// 	mosaicRight.changeTimeSpan(min,span);
-	// 	swordRight.changeTime(min,span);
-	// 	starRight.changeColor();
-	// });
 
-	// console.log(sizeData);
-	// console.log(sizeDataRight);
 
 	d3.select('.zoomSizeDiv').call(d3.slider()
 							.min(1)
@@ -112,37 +88,6 @@ function initWithData(data,dataRight,sizeData,sizeDataRight,network,networkRight
 					      	mosaicRight.changeLensDivSize(value);
 					    })
   );
-
-    // var knnNum = 5;
-    // var proximity = 5;
-    // d3.select('#knnNumDiv').call(d3.slider()
-		// 					.min(3)
-		// 					.max(10)
-		// 					.value(5)
-		// 					.on("slide", function(evt, value) {
-		// 				      	knnNum = Math.floor(value);
-		// 				    })
-    // );
-		//
-    // d3.select('#proximityDiv').call(d3.slider()
-		// 					.min(3)
-		// 					.max(20)
-		// 					.value(5)
-		// 					.on("slide", function(evt, value) {
-		// 				      	proximity = Math.floor(value);
-		// 				    })
-    // );
-
-    // d3.select("#overallStarPlotDivContainerLeft").style("visibility","hidden");
-	  // d3.select("#overallStarPlotDivContainerRight").style("visibility","hidden");
-
-    // knnFun = function(data,pixel,min,span){
-    // 	console.log("ToKNN");
-    // 	var knn = new neighborsPlot("#knnDivContainer",data,pixel,min,span,knnNum,proximity)
-    // }
-
-    //mosaic.onKNN(knnFun);
-    //mosaicRight.onKNN(knnFun);
 
   d3.select(".loadingDiv").style("visibility","hidden");
 }
@@ -178,7 +123,6 @@ function changeLeftData(data,sizeData,netData,grayData){
   sword = new swordPlot("#swordDivContainerLeft", data, 1, grayData, min, span);
 	star = new starPlot("#starPlotDivContainerLeft", netData, 1);
 
-	//mosaic.onKNN(knnFun);
 	mosaic.onZoom(function(pixels,d){
 		if (zoomSync){
 			mosaicRight.zoomHere(pixels,d);
@@ -218,7 +162,6 @@ function changeRightData(data,sizeData,netData,grayData){
 	swordRight = new swordPlot("#swordDivContainerRight",data,1,grayData, min, span);
 	starRight = new starPlot("#starPlotDivContainerRight",netData,1);
 
-    //mosaicRight.onKNN(knnFun);
   mosaicRight.onZoom(function(pixels,d){
 		if (zoomSync){
 			mosaic.zoomHere(pixels,d);
@@ -281,17 +224,28 @@ function changeAction(act) {
     mosaic.pStartPoint = null;
 	  mosaicRight.pStartPoint = null;
 	}
-
-	/*d3.select("#sliderDivContainer").style("visibility", act == "zoom" ? "visible" : "hidden");
-	d3.select("#knnOptionsDivContainer").style("visibility", act == "KNN" ? "visible" : "hidden");*/
-
-	// d3.select("#overallStarPlotDivContainerLeft").style("visibility", act == "KNN" ? "visible" : "hidden");
-	// d3.select("#overallStarPlotDivContainerRight").style("visibility", act == "KNN" ? "visible" : "hidden");
 }
+
+
+function drawMosaic(val){
+	if (val) {
+		viewAction = "zoom";
+	} else {
+		viewAction = null;
+		initAction = null;
+		d3.select("#mosaicDivContainerLeft").select(".selectedLens").remove();
+		d3.select("#mosaicDivContainerRight").select(".selectedLens").remove();
+	}
+
+	mosaic.changeAction(viewAction);
+	mosaicRight.changeAction(viewAction);
+}
+
 
 function changeTimeChain(val){
 	timeSync = val;
 }
+
 
 function changeZoomChain(val){
 	zoomSync = val;
@@ -319,7 +273,7 @@ function starPlotLegendView(where){
 		   .attr("text-anchor", "start")
 		   .attr("font-size", 16)
 		   .style("fill", "black")
-		   .text("Network/Node Attributes:");
+		   .text("Node Attributes:");
 
     svg.append("text")
 		   .attr("transform", "translate(" + 6 + "," + 30 + ")")

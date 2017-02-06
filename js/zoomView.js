@@ -9,9 +9,13 @@ function zoomView(where, commData, pixels, minTime, span, swordID, grayData, sta
 	var title = allContainer.append("div").attr("class","zoomTitleBar");
 	var container = allContainer.append("div").attr("class","zoomContentContainer");
 
+  var mosaicTitle = title.append("div")
+	  .append("text")
+		.attr("class", "titleMosaic")
+		.text("Community Dynamics in the Selected Region");
+
 	var l = Math.ceil(Math.sqrt(pixels.length));
 	var squareLPct = (100-l) / l;
-
 
 	for (var i= 0; i<pixels.length;i++){
 		// one pixel over time

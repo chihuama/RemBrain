@@ -79,21 +79,21 @@ body{
 	left:1%;
 	top:7%;
 	height: 25%;
-	width: 28%;
+	width: 26%;
 	margin: 0 0;
 }
 .swordDivContainerRight{
 	position: absolute;
-	left:43%;
+	left:45%;
 	top:7%;
 	height: 25%;
-	width: 28%;
+	width: 26%;
 	margin: 0 0;
 }
 
 .starPlotDivContainerLeft{
 	position: absolute;
-	left:30%;
+	left:28%;
 	top:7%;
 	height: 25%;
 	width: 10%;
@@ -146,16 +146,16 @@ body{
 	left: 1%;
 	top: 38%;
 	height: 2%;
-	width: 40%;
+	width: 38%;
 	margin: 0 0;
 	text-align: center;
 }
 .mosaicTopDivContainerRight{
   position: absolute;
-	left: 43%;
+	left: 45%;
 	top: 38%;
 	height: 2%;
-	width: 40%;
+	width: 38%;
 	margin: 0 0;
 	text-align: center;
 }
@@ -180,16 +180,16 @@ body{
 	left: 1%;
 	top: 41%;
 	height: 45%;
-	width: 40%;
+	width: 38%;
 	margin: 0 0;
 	background-color: #cccccc;
 }
 .mosaicDivContainerRight{
 	position: absolute;
-	left: 43%;
+	left: 45%;
 	top: 41%;
 	height: 45%;
-	width: 40%;
+	width: 38%;
 	margin: 0 0;
 	background-color: #cccccc;
 }
@@ -251,19 +251,19 @@ select, option {
 
 .leftTimelineDivContainer{
 	position: absolute;
-	left:1%;
-	top:90%;
+	left: 1%;
+	top: 90%;
 	height: 8%;
-	width: 40%;
+	width: 38%;
 	border: 1px black solid;
 	background-color: white;
 }
 .rightTimelineDivContainer{
 	position: absolute;
-	left:43%;
-	top:90%;
+	left: 45%;
+	top: 90%;
 	height: 8%;
-	width: 40%;
+	width: 38%;
 	border: 1px black solid;
 	background-color: white;
 }
@@ -278,10 +278,10 @@ select, option {
 
 .starPlotLegend{
 	position: absolute;
-	left: 85%;
+	left: 88%;
 	top: 5%;
 	height: 25%;
-	width: 14%;
+	width: 12%;
 }
 
 .toolBoxDiv{
@@ -295,8 +295,8 @@ select, option {
 .actionChooserContainerDiv{
 	position: absolute;
 	left: 0%;
-	top: 0%;
-	height: 10%;
+	top: 2%;
+	height: 5%;
 	width: 100%;
 	font-size: 1.6vmin;
 	text-align: left;
@@ -309,7 +309,7 @@ select, option {
 .sliderDivContainer{
 	position: absolute;
 	left: 11%;
-	top: 11%;
+	top: 8%;
 	height: 10%;
 	width: 88%;
 }
@@ -420,23 +420,36 @@ select, option {
 	background-color: white;
 	visibility: hidden;
 }
-.zoomSquareDiv{
-	position: absolute;
-}
+
 .zoomTitleBar{
 	position: absolute;
 	top: 0;
 	left: 0;
-	height: 5%;
+	height: 8%;
 	width: 100%;
 	background-color: #888888;
 }
+.titleMosaic{
+	position: absolute;
+	left: 0%;
+	top: 0%;
+	height: 100%;
+	width: 100%;
+	margin: 0 0;
+	text-align: center;
+	font-size: 1.4vmin;
+	font-weight: bold;
+}
+
 .zoomContentContainer{
 	position: absolute;
-	top: 6%;
+	top: 9%;
 	left: 0%;
-	height: 94%;
+	height: 91%;
 	width: 100%;
+}
+.zoomSquareDiv{
+	position: absolute;
 }
 
 

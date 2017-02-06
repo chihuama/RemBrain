@@ -25,7 +25,7 @@
 	<div class="mainContainer">
 
     <div class="titleProj">RemBrain - </div>
-		<div class="titleProjExp">Dynamic Biospatial Networks Explorer</div>
+		<div class="titleProjExp">Comparison of Dynamic Biospatial Networks</div>
 		<!-- <div class="titleIndividualLeft">Individual Behaviors</div>
 		<div class="titleIndividualRight">Individual Behaviors</div>
 		<div class="titleSliceLeft">Slice View + Mosaic-Matrix</div>
@@ -33,9 +33,9 @@
 		<div class="titleTimelineLeft">Timeline</div>
 		<div class="titleTimelineRight">Timeline</div> -->
 
-		<div class="titleIndividual">Individual Behaviors</div>
-		<div class="titleSlice">Aggerate Slice Views + Mosaic-Matrices</div>
-		<div class="titleTimeline">Timeline Widgets</div>
+		<div class="titleIndividual">Individual Node Behavior over Time</div>
+		<div class="titleSlice">Aggregate Community Distributions per Mouse Brain Slice</div>
+		<div class="titleTimeline">Total Number of Active Nodes over Time</div>
 
 		<div id="swordDivContainerLeft" class="swordDivContainerLeft"></div>
     <div id="starPlotDivContainerLeft" class="starPlotDivContainerLeft"></div>
@@ -63,7 +63,7 @@
  	  <div id="starPlotDivContainerRight" class="starPlotDivContainerRight"></div>
 		<div id="mosaicTopDivContainerRight" class="mosaicTopDivContainerRight">
 			<select id="dataOptionListRight" name="dataRight" onchange="changeRightMosaicData()">
-				  <option value="Young40_a1"> Young40_a1</option>
+				 <option value="Young40_a1"> Young40_a1</option>
 				 <option value="Old38_a1" selected="selected"> Old38_a1</option>
 				 <option value="Old38_a2"> Old38_a2</option>
 				 <option value="Old38_a3"> Old38_a3</option>
@@ -77,11 +77,13 @@
 
 		<div id="toolBoxDiv" class="toolBoxDiv">
 			<div id="actionChooserContainerDiv" class="actionChooserContainerDiv">
-					<form>
+					<!-- <form>
 						<input type="radio" name="gender" value="sword" onclick="changeAction(this.value)"> Individual Behavior View<br>
 						<br>
 				  	<input type="radio" name="gender" value="zoom" checked onclick="changeAction(this.value)"> Mosaic Matrix View<br>
-					</form>
+					</form> -->
+					<!-- Mosaic Matrix View -->
+					<input type="checkbox" style="display:inline" checked onclick="drawMosaic(this.checked)"> Mosaic Matrix View </input>
 			</div>
 
 			<div id="sliderDivContainer" class="sliderDivContainer">

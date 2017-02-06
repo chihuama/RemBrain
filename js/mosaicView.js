@@ -23,20 +23,13 @@ function mosaicView(where, rows, cols, commData, min, span, swordID, starID, net
 	this.commData = commData;
 	this.minTimeShown = min;
 	this.span = span;
-	// this.action = "zoom";
 	this.action = viewAction;
 
-	// this.initAction = null;
-	// console.log(this.initAction);
-
 	var cellSize = 10;
-
 	var pixels;
-	// var pStartPoint;
+
 	this.pStartPoint;
-
 	this.selectedPixel = 0;
-
 
 	var svg = container.append("svg").attr("class","mosaicSvg")
 									.attr("preserveAspectRatio","none")
@@ -83,12 +76,10 @@ function mosaicView(where, rows, cols, commData, min, span, swordID, starID, net
 									.style("stroke-width", Math.floor(cellSize / 3))
 									.on("mouseup",function(d){
 										if (that.action == "zoom"){
-											// var pixels = [];
 											pixels = [];
 											that.pStartPoint = d;
 											pStartPointShared = d;
-											// console.log(d);
-											// console.log(this.pStartPoint);
+
 											for (var i=0;i<that.lensSize;i++){
 												for (var j=0;j<that.lensSize;j++){
 													pixels.push( (d["r"] + i)* that.cols + d["c"] + j );
@@ -123,7 +114,7 @@ function mosaicView(where, rows, cols, commData, min, span, swordID, starID, net
 										} else if (that.action=="sword"){
 											// color star plot with its most common community color
 											console.log(d["r"] * that.cols + d["c"]);
-											// console.log(pStartPoint);
+
 											overallColor[r* this.cols + c] = that.mostCommon(d["r"],d["c"]);
 											// that.sword = new swordPlot(SWORD_ID,that.commData,(d["r"]) * that.cols + d["c"],grayData );
 											// that.star = new starPlot(starID,netData,(d["r"]) * that.cols + d["c"]);
@@ -148,12 +139,12 @@ function mosaicView(where, rows, cols, commData, min, span, swordID, starID, net
 										  .attr("y", d.r * cellSize)
 										  .attr("width", (that.action=="zoom"? that.lensSize : 1) * cellSize)
 										  .attr("height", (that.action=="zoom"? that.lensSize : 1) * cellSize)
-										  // .style("fill","transparent")
 											.style("fill", "#000000")
 											.style("opacity", 0.6)
 											.style("stroke","#FF0000")
 											.style("stroke-width", Math.floor(cellSize / 2));
 									});
+
 
 	svg.selectAll(".tile")
 	  .on("mouseover",function(d){
@@ -165,13 +156,13 @@ function mosaicView(where, rows, cols, commData, min, span, swordID, starID, net
 				.datum({"r":r, "c":c});
 		});
 
+
 	this.onZoom = function(fun){
 		this.onZoomFun = fun;
 	}
 
+
 	this.zoomHere = function(pixels, d){
-		// console.log(pixels);
-		// console.log(d);
 		if (pixels === undefined) {
 			pixels = [];
 			for (var i=0;i<that.lensSize;i++){
@@ -189,25 +180,22 @@ function mosaicView(where, rows, cols, commData, min, span, swordID, starID, net
 			.attr("y", d.r * cellSize)
 			.attr("width", (that.action=="zoom"? that.lensSize : 1) * cellSize)
 			.attr("height", (that.action=="zoom"? that.lensSize : 1) * cellSize)
-			// .style("fill","transparent")
 			.style("fill", "#000000")
 			.style("opacity", 0.6)
 			.style("stroke","#FF0000")
 			.style("stroke-width", Math.floor(cellSize / 2));
 	}
 
+
 	this.updateColor = function(){
-		// this.zoomDiv.style("visibility","hidden");
-		// d3.select("zoomDivContainer").remove();
 		svg.selectAll(".tile")
 		  .attr("fill",function(d,i){
 				return that.mostCommon(d["r"],d["c"]);
 			});
 	}
 
+
 	this.updateZoom = function(min, span) {
-		// console.log(where);
-		// console.log(pStartPoint);
 		var location;
 		if (zoomSync) {
 			location = pStartPointShared;
@@ -228,34 +216,36 @@ function mosaicView(where, rows, cols, commData, min, span, swordID, starID, net
 		svg.selectAll(".selectedLens")
 			.attr("x", location.c * cellSize)
 			.attr("y", location.r * cellSize);
-
 	}
+
 
 	this.getPixels = function() {
 		return pixels;
 	}
 
+
 	this.getLocation = function() {
 		if (that.pStartPoint === undefined) {
-			// return {"r": 1, "c": 1};
 			return pStartPointSharedPre;
 		}
 		return that.pStartPoint;
 	}
 
+
 	this.changeTimeSpan = function(min,span){
 		this.minTimeShown = min;
 		this.span = span;
 		this.updateColor();
-		// console.log(this.selectedPixel);
 	}
+
 
 	this.changeAction = function(action){
 		this.zoomDiv.style("visibility","hidden");
 		this.action = action;
-		this.lensRect.attr("width", (this.action=="zoom"? this.lensSize : 1) * cellSize)
-					 .attr("height", (this.action=="zoom"? this.lensSize : 1) * cellSize);
+		this.lensRect.attr("width", (this.action=="zoom"? this.lensSize : 0) * cellSize)
+					 .attr("height", (this.action=="zoom"? this.lensSize : 0) * cellSize);
 	}
+
 
   // pixel color
 	this.mostCommon = function(r,c) {
@@ -264,11 +254,9 @@ function mosaicView(where, rows, cols, commData, min, span, swordID, starID, net
 		for (var j in colorScale){
 			colors[colorScale[j]] = 0;
 		}
-
 		for (var i = this.minTimeShown; i< this.minTimeShown + this.span; i++){
 			colors[colorScale[this.commData[i][r* this.cols + c][1]]] += 1;  // gcolor: [][][0]; icolor: [][][1]
 		}
-
 		colors[colorScale[0]] = 0;
 
 		var max = 0;
@@ -284,8 +272,6 @@ function mosaicView(where, rows, cols, commData, min, span, swordID, starID, net
 		overallColor[r* this.cols + c] = colorScale[maxInd];
 
 		if (maxInd === 0) {
-			// console.log(colorScale[maxInd]);
-			// return 'none';
 			return "transparent";
 		} else {
 			return colorScale[maxInd];
@@ -303,9 +289,11 @@ function mosaicView(where, rows, cols, commData, min, span, swordID, starID, net
 		}
 	}
 
+
 	this.changeLensDivSize = function(num){
 		this.zoomDiv.style("width",num +"%").style("height",num +"%");
 	}
+
 
 	this.updateColor();
 

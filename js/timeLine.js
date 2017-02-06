@@ -48,7 +48,7 @@ function timelineView(where,data){
 
   // label for the max
 	this.updateLabel = function(data) {
-		//
+
 		var maxY = 0;
 		var maxT = 0;
 		for (var i=0; i<data.length; i++) {
@@ -57,8 +57,6 @@ function timelineView(where,data){
 				maxT = i;
 			}
 		}
-		// console.log(maxY);
-		// console.log(maxT);
 
 		svg.select("#labels").remove();
 
@@ -90,12 +88,12 @@ function timelineView(where,data){
 			.style("stroke-dasharray", ("10, 5"));
 
 		labels.append("text")
-		  .attr("x", x(maxT))
+		  .attr("x", x(maxT) - 10)
 			.attr("y", h - 1)
 			.style("fill", "black")
 			.style("font-size", 20)
-			.style("text-anchor", "middle")
-			.text(" " + maxT);
+			.style("text-anchor", "left")
+			.text(" " + maxT + " frame (~70 frames/sec)");
 	}
 
   this.updateLabel(data);
@@ -106,8 +104,6 @@ function timelineView(where,data){
   var timeBrush = this.timeBrush = d3.svg.brush()
 	  .x(x)
 		.extent([this.minTime, this.minTime + this.span])
-		// .on("brushstart", brushstart)
-    // .on("brush", brushmove)
     .on("brushend", brushend);
 
 	var tBrush = this.tBrush = svg.append("g");
@@ -120,26 +116,9 @@ function timelineView(where,data){
    .selectAll("rect")
      .attr("height", h);
 
-	// console.log(timeBrush.extent());
-
-	function brushstart() {
-		// console.log("brushstart" + this);
-    // console.log(d3.event);
-	}
-
-	function brushmove() {
-		// console.log("brush" + this);
-    // console.log(d3.event);
-	}
 
 	function brushend() {
 		if (!d3.event.sourceEvent) return; // Only transition after input.
-
-    // if (!d3.event.selection) {
-		// 	// default location
-		// 	// timeBrush.extent([20, 30]);
-		// 	return;
-		// }
 
 		that.minTime = Math.round(timeBrush.extent()[0]);
 		that.span = Math.round(timeBrush.extent()[1]) - Math.round(timeBrush.extent()[0]);
@@ -178,16 +157,15 @@ function timelineView(where,data){
 			swordRight.changeTime(that.minTime, that.span);
 			starRight.changeColor();
 		}
-		// console.log(that.minTime);
-		// console.log(that.span);
+
 	}
+
 
 	this.update = function(range, min, span){
 		this.tBrush.call(timeBrush.extent(range));
 		this.minTime = min;
 		this.span = span;
 	}
-
 
   /****************************************/
 	// var LEFT=1;
@@ -297,7 +275,7 @@ function timelineView(where,data){
   this.changeData = function(data, min, span){
   	this.minTime = min; //0;
   	this.span = span; //10;
-  	// this.updateTimeWindow();
+
   	this.svg.select(".line")
 			.attr("d", this.valueline(data));
 
@@ -306,5 +284,5 @@ function timelineView(where,data){
 
 	timeStart = this.minTime;
 	timeSpan = this.span;
-  // this.updateTimeWindow();
+
 }

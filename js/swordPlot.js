@@ -80,7 +80,7 @@ function swordPlot(where,data,pixel,grayData, minTime, span){
 		.attr("y", upperY(max) + 65)
 		.style("fill", "black")
 		.style("font-size", 92)
-		.text(" " + max);
+		.text(" " + max + " (Node degree)");
 
 	// time start & end labels
 	svg.append("text")
@@ -96,6 +96,13 @@ function swordPlot(where,data,pixel,grayData, minTime, span){
 		.style("fill", "black")
 		.style("font-size", 74)
 		.text(" " + 100);
+
+	svg.append("text")
+	  .attr("x", w - 220)
+		.attr("y", singleH + sword + 140)
+		.style("fill", "black")
+		.style("font-size", 74)
+		.text("(frame)");
 
 
 	svg.selectAll(".upperBar").data(upperColor).enter().append("rect")
@@ -156,7 +163,6 @@ function swordPlot(where,data,pixel,grayData, minTime, span){
     .attr("class", "swordLine")
     .attr("d", valueline(gray));
 
-
   // highlight the selected time
 	svg.append("rect").attr("id", "swordTimeWindow")
 		.attr("x", w * this.minTime / 101)
@@ -166,19 +172,15 @@ function swordPlot(where,data,pixel,grayData, minTime, span){
 		.style("fill", "white")
 		.style("opacity", 0.5);
 
+
 	this.changeTime = function(min, span){
-		// console.log(min);
-		// console.log(span);
 		svg.select("#swordTimeWindow")
 			.attr("x", w * min / 101)
 			.attr("width", w * span / 101);
 	}
 
-	// check it !!!!
+
 	this.reset = function(min, span) {
-		// container.selectAll("*").remove();
-		// console.log(minT);
-		// console.log(spanT);
 		if (min === undefined) {
 			return new swordPlot(where, data, 1, grayData, this.minTime, this.span);
 		}
