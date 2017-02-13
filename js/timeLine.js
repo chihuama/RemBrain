@@ -88,12 +88,46 @@ function timelineView(where,data){
 			.style("stroke-dasharray", ("10, 5"));
 
 		labels.append("text")
+		  .attr("x", 0)
+			.attr("y", h - 1)
+			.style("fill", "black")
+			.style("font-size", 20)
+			.style("text-anchor", "left")
+			.text("0");
+
+		labels.append("text")
+		  .attr("x", w - 35)
+			.attr("y", h - 1)
+			.style("fill", "black")
+			.style("font-size", 20)
+			.style("text-anchor", "left")
+			.text("100");
+
+		labels.append("text")
 		  .attr("x", x(maxT) - 10)
 			.attr("y", h - 1)
 			.style("fill", "black")
 			.style("font-size", 20)
 			.style("text-anchor", "left")
-			.text(" " + maxT + " frame (~70 frames/sec)");
+			.text(" " + maxT + " timestep")
+			.on("mouseover", function(d) {
+				var evt = d3.event;
+
+				console.log(evt.clientX + ", " + evt.clientY);
+
+				d3.select("#time-toolTip")
+				  .style("display", "initial")
+					.style("top", function(d) {
+						return evt.clientY - 30 + "px";
+					})
+					.style("left", function(d) {
+						return evt.clientX + "px";
+					})
+			})
+			.on("mouseout", function(d) {
+				d3.select("#time-toolTip")
+				  .style("display", "none");
+			});
 	}
 
   this.updateLabel(data);

@@ -98,11 +98,27 @@ function swordPlot(where,data,pixel,grayData, minTime, span){
 		.text(" " + 100);
 
 	svg.append("text")
-	  .attr("x", w - 220)
+	  .attr("x", w - 320)
 		.attr("y", singleH + sword + 140)
 		.style("fill", "black")
 		.style("font-size", 74)
-		.text("(frame)");
+		.text("(Timestep)")
+		.on("mouseover", function(d) {
+			var evt = d3.event;
+
+			d3.select("#time-toolTip")
+			  .style("display", "initial")
+				.style("top", function(d) {
+					return evt.clientY + 12 + "px";
+				})
+				.style("left", function(d) {
+					return evt.clientX + "px";
+				})
+		})
+		.on("mouseout", function(d) {
+			d3.select("#time-toolTip")
+			  .style("display", "none");
+		});
 
 
 	svg.selectAll(".upperBar").data(upperColor).enter().append("rect")
@@ -120,6 +136,22 @@ function swordPlot(where,data,pixel,grayData, minTime, span){
 							.style("fill",function(d,i){
 								return colorScale[d];
 							})
+							.on("mouseover", function(d) {
+								var evt = d3.event;
+
+								d3.select("#temp-toolTip")
+								  .style("display", "initial")
+									.style("top", function(d) {
+										return evt.clientY - 30 + "px";
+									})
+									.style("left", function(d) {
+										return evt.clientX + "px";
+									})
+							})
+							.on("mouseout", function(d) {
+								d3.select("#temp-toolTip")
+								  .style("display", "none");
+							});
 
 	svg.selectAll(".lowerBar").data(lowerColor).enter().append("rect")
 							.attr("class","lowerBar")
@@ -133,6 +165,22 @@ function swordPlot(where,data,pixel,grayData, minTime, span){
 							})
 							.style("fill",function(d,i){
 								return colorScale[d];
+							})
+							.on("mouseover", function(d) {
+								var evt = d3.event;
+
+								d3.select("#home-toolTip")
+								  .style("display", "initial")
+									.style("top", function(d) {
+										return evt.clientY - 30 + "px";
+									})
+									.style("left", function(d) {
+										return evt.clientX + "px";
+									})
+							})
+							.on("mouseout", function(d) {
+								d3.select("#home-toolTip")
+								  .style("display", "none");
 							});
 
 
