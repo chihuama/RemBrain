@@ -24,6 +24,16 @@ function starPlot(where,data, pixel){
 	var nCat = Object.keys(data[key0]).length;
 	var angleStep = 2 * Math.PI / nCat;
 
+
+	let axisLabel = ["Observed", "Time span", "Switching", "Absence", "Visiting", "Homing", "Avg group size", "Avg community size", "Avg community stay", "Max community stay"];
+	let axisVal = [];
+  let tip = d3.tip()
+	  .attr("class", "d3-tip")
+		.html(function(d) { return d.cat + ": " + d.val; });
+
+	svg.call(tip);
+
+
 	for (var i=0; i< nCat;i++){
 		svg.append("line")
 		  .attr("x1",0)
@@ -32,14 +42,6 @@ function starPlot(where,data, pixel){
 			.attr("x2",Math.cos( i * angleStep) * w/2 * 0.9)
 			.attr("y2",Math.sin( i * angleStep) * h/2 * 0.9)
 			.attr("class","starPlotAxis");
-
-	  svg.append("text")
-		  .attr("transform", "translate(" + Math.cos( i * angleStep) * w/2 * 0.91 + "," + Math.sin( i * angleStep) * h/2 * 0.91 + ")")
-		  .attr("dy", ".35em")
-		  .attr("text-anchor", "start")
-		  .attr("font-size", 18)
-		  .style("fill", "black")
-		  .text(i);
 	}
 
 	var line;
@@ -48,6 +50,7 @@ function starPlot(where,data, pixel){
 	if (pixel in data){
 		for (var i=0; i< nCat;i++){
 			var key = Object.keys(data[key0])[i];
+			axisVal.push(d3.format(".3f")(data[pixel][key]));
 			d += (i==0? "M":"L") +  (Math.cos( i * angleStep) * w/2 * 0.9 * data[pixel][key]) + " " + (Math.sin( i * angleStep) * h/2 * 0.9 * data[pixel][key]) + " ";
 		}
 		d+= "Z";
@@ -56,6 +59,25 @@ function starPlot(where,data, pixel){
 		  .attr("fill",overallColor[pixel])
 			.attr("stroke","black");
 			//.attr("class","starPlotPath");
+	}
+
+	for (var i=0; i< nCat;i++){
+	  svg.append("text")
+		  .attr("transform", "translate(" + Math.cos( i * angleStep) * w/2 * 0.91 + "," + Math.sin( i * angleStep) * h/2 * 0.91 + ")")
+		  .attr("dy", ".35em")
+		  .attr("text-anchor", "start")
+		  .attr("font-size", 18)
+		  .style("fill", "black")
+		  .text(i);
+
+		svg.append("circle")
+		  .attr("cx", Math.cos( i * angleStep) * w/2 * 0.91)
+			.attr("cy", Math.sin( i * angleStep) * h/2 * 0.91)
+			.attr("r", 20)
+			.style("fill-opacity", 0)
+			.datum({"cat": axisLabel[i], "val": axisVal[i]})
+			.on("mouseover", tip.show)
+			.on("mouseout", tip.hide);
 	}
 
 	this.changeColor = function() {
